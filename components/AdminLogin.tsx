@@ -22,9 +22,9 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
 
   return (
     <div className="max-w-md mx-auto mt-10">
-      <div className="bg-gray-800 p-8 rounded-xl shadow-lg text-center">
+      <div className="bg-slate-900 p-8 rounded-xl shadow-lg text-center">
         <h2 className="text-2xl font-bold mb-2 text-indigo-400">Admin Access Required</h2>
-        <p className="text-gray-400 mb-6">You need admin credentials to access the image generator.</p>
+        <p className="text-slate-400 mb-6">You need admin credentials to access the image generator.</p>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <input
@@ -35,7 +35,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
                 if (error) setError('');
               }}
               placeholder="Enter admin password"
-              className="w-full bg-gray-700 border border-gray-600 text-white rounded-md px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-center"
+              className="w-full bg-slate-800 border border-slate-700 text-white rounded-md px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-center"
               aria-label="Admin Password"
             />
           </div>
@@ -47,7 +47,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
           </button>
           {error && <p className="text-red-400 text-sm mt-3">{error}</p>}
         </form>
-        <p className="text-xs text-gray-500 mt-6">
+        <p className="text-xs text-slate-500 mt-6">
           Hint: For this demo, the password is '<code>{ADMIN_PASSWORD}</code>'.
         </p>
       </div>

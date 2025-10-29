@@ -19,7 +19,7 @@ export const GeneratedImage: React.FC<GeneratedImageProps> = ({ imageUrl, prompt
   };
 
   return (
-    <div className="aspect-square w-full bg-gray-800 rounded-lg overflow-hidden shadow-lg group relative">
+    <div className="aspect-square w-full bg-slate-900 rounded-lg overflow-hidden shadow-lg group relative">
       <img
         src={imageUrl}
         alt={prompt}

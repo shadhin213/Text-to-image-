@@ -31,9 +31,9 @@ export const PromptEnhancer: React.FC<PromptEnhancerProps> = ({ onUsePrompt }) =
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-gray-800 p-6 rounded-xl shadow-lg">
+    <div className="max-w-4xl mx-auto bg-slate-900 p-6 rounded-xl shadow-lg">
       <h3 className="text-xl font-bold mb-3 text-indigo-400">Prompt Enhancer</h3>
-      <p className="text-gray-400 mb-4 text-sm">Not sure what to write? Enter a basic idea, and let AI suggest detailed prompts for you.</p>
+      <p className="text-slate-400 mb-4 text-sm">Not sure what to write? Enter a basic idea, and let AI suggest detailed prompts for you.</p>
       
       <div className="flex flex-col sm:flex-row gap-4 mb-6">
         <input
@@ -41,7 +41,7 @@ export const PromptEnhancer: React.FC<PromptEnhancerProps> = ({ onUsePrompt }) =
           value={idea}
           onChange={(e) => setIdea(e.target.value)}
           placeholder="e.g., a magical forest"
-          className="flex-grow bg-gray-700 border border-gray-600 text-white rounded-md px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
+          className="flex-grow bg-slate-800 border border-slate-700 text-white rounded-md px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
           disabled={isLoading}
         />
         <button
@@ -57,13 +57,13 @@ export const PromptEnhancer: React.FC<PromptEnhancerProps> = ({ onUsePrompt }) =
       
       {suggestions.length > 0 && (
         <div className="space-y-3">
-          <h4 className="font-semibold text-gray-300">Suggestions:</h4>
+          <h4 className="font-semibold text-slate-300">Suggestions:</h4>
           {suggestions.map((suggestion, index) => (
-            <div key={index} className="bg-gray-900/50 p-3 rounded-lg flex items-center justify-between gap-4">
-              <p className="text-sm text-gray-300 flex-grow">{suggestion}</p>
+            <div key={index} className="bg-slate-950/50 p-3 rounded-lg flex items-center justify-between gap-4">
+              <p className="text-sm text-slate-300 flex-grow">{suggestion}</p>
               <button
                 onClick={() => onUsePrompt(suggestion)}
-                className="bg-gray-600 hover:bg-gray-500 text-white text-xs font-bold py-1.5 px-3 rounded-md transition-colors whitespace-nowrap"
+                className="bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold py-1.5 px-3 rounded-md transition-colors whitespace-nowrap"
               >
                 Use Prompt
               </button>

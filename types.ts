@@ -10,4 +10,4 @@ export interface ImageRecord {
   aspectRatio: AspectRatio;
 }
 
-export type View = 'user' | 'admin';
+export type View = 'home' | 'user' | 'admin';
