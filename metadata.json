@@ -1,0 +1,5 @@
+{
+  "name": "AI Image Generation Platform",
+  "description": "A platform for users to generate images from text prompts using AI. It includes an admin dashboard to view the history of all generated images.",
+  "requestFramePermissions": []
+}
