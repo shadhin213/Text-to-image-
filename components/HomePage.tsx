@@ -26,6 +26,15 @@ export const HomePage: React.FC<HomePageProps> = ({ setView }) => {
           <span>Text to Image Generator</span>
         </button>
       </div>
+
+      <div className="mt-8">
+        <button
+          onClick={() => setView('admin')}
+          className="text-slate-500 hover:text-indigo-400 text-sm font-medium transition-colors"
+        >
+          Admin Login
+        </button>
+      </div>
     </div>
   );
 };

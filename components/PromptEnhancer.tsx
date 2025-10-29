@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { enhancePrompt } from '../services/geminiService';
+import { geminiService } from '../services/geminiService';
 import { Spinner } from './Spinner';
 
 interface PromptEnhancerProps {
@@ -21,7 +21,7 @@ export const PromptEnhancer: React.FC<PromptEnhancerProps> = ({ onUsePrompt }) =
     setError(null);
     setSuggestions([]);
     try {
-      const newSuggestions = await enhancePrompt(idea);
+      const newSuggestions = await geminiService.enhancePrompt(idea);
       setSuggestions(newSuggestions);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unexpected error occurred.');

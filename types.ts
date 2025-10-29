@@ -10,4 +10,11 @@ export interface ImageRecord {
   aspectRatio: AspectRatio;
 }
 
+// REVERT: Re-added ApiKey type to support client-side key management.
+export interface ApiKey {
+  id: string;
+  key: string;
+  isActive: boolean;
+}
+
 export type View = 'home' | 'user' | 'admin';

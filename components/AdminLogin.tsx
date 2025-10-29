@@ -4,7 +4,7 @@ interface AdminLoginProps {
   onLoginSuccess: () => void;
 }
 
-const ADMIN_PASSWORD = 'gemini-admin-password';
+const ADMIN_PASSWORD = 'shadhin123';
 
 export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
   const [password, setPassword] = useState('');
@@ -24,7 +24,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
     <div className="max-w-md mx-auto mt-10">
       <div className="bg-slate-900 p-8 rounded-xl shadow-lg text-center">
         <h2 className="text-2xl font-bold mb-2 text-indigo-400">Admin Access Required</h2>
-        <p className="text-slate-400 mb-6">You need admin credentials to access the image generator.</p>
+        <p className="text-slate-400 mb-6">Please enter the admin password to access the dashboard.</p>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <input
@@ -47,9 +47,6 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
           </button>
           {error && <p className="text-red-400 text-sm mt-3">{error}</p>}
         </form>
-        <p className="text-xs text-slate-500 mt-6">
-          Hint: For this demo, the password is '<code>{ADMIN_PASSWORD}</code>'.
-        </p>
       </div>
     </div>
   );

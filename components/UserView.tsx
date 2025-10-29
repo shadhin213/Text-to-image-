@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { generateImage } from '../services/geminiService';
+import { geminiService } from '../services/geminiService';
 import type { ImageRecord, Category, AspectRatio } from '../types';
 import { Spinner } from './Spinner';
 import { GeneratedImage } from './GeneratedImage';
@@ -36,7 +36,7 @@ export const UserView: React.FC<UserViewProps> = ({ onImageGenerated }) => {
     try {
       const imagePromises = imageStyles.map(style => {
         const fullPrompt = `${style} style, a high-quality ${category.toLowerCase()} image of: ${currentPrompt}`;
-        return generateImage(fullPrompt, currentAspectRatio);
+        return geminiService.generateImage(fullPrompt, currentAspectRatio);
       });
 
       const newImageUrls = await Promise.all(imagePromises);
@@ -52,7 +52,13 @@ export const UserView: React.FC<UserViewProps> = ({ onImageGenerated }) => {
       });
 
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+      const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred.';
+      // REVERT: Add specific check for "No active API key" error.
+      if (errorMessage.includes("No active API key set")) {
+        setError("This application is not yet configured. An administrator needs to set an active API key in the admin dashboard.");
+      } else {
+        setError(errorMessage);
+      }
     } finally {
       setIsLoading(false);
     }
