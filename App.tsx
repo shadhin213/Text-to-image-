@@ -80,7 +80,7 @@ const App: React.FC = () => {
       case 'home':
         return <HomePage setView={setView} />;
       case 'user':
-        return <UserView onImageGenerated={handleImageGenerated} />;
+        return <UserView onImageGenerated={handleImageGenerated} onBack={() => setView('home')} />;
       case 'admin':
         return isAdminAuthenticated ? (
           // REVERT: Pass API key management props to AdminLayout.

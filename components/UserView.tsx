@@ -7,6 +7,7 @@ import { PromptEnhancer } from './PromptEnhancer';
 
 interface UserViewProps {
   onImageGenerated: (record: ImageRecord) => void;
+  onBack: () => void;
 }
 
 const categories: Category[] = ['General', 'Photography', 'Digital Art', 'Sci-Fi', 'Fantasy', 'Abstract'];
@@ -20,7 +21,7 @@ const aspectRatios: { label: string, value: AspectRatio }[] = [
 const imageStyles = ['Cinematic', 'Portrait', 'Photorealistic', 'Digital Art'];
 
 
-export const UserView: React.FC<UserViewProps> = ({ onImageGenerated }) => {
+export const UserView: React.FC<UserViewProps> = ({ onImageGenerated, onBack }) => {
   const [prompt, setPrompt] = useState('');
   const [lastUsedPrompt, setLastUsedPrompt] = useState('');
   const [imageUrls, setImageUrls] = useState<string[]>([]);
@@ -82,6 +83,17 @@ export const UserView: React.FC<UserViewProps> = ({ onImageGenerated }) => {
 
   return (
     <div className="max-w-7xl mx-auto">
+      <button 
+        onClick={onBack} 
+        className="flex items-center gap-2 text-slate-400 hover:text-indigo-400 transition-colors mb-4 text-sm font-medium"
+        aria-label="Go back to homepage"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Back to Home</span>
+      </button>
+
       <div className="bg-slate-900 p-6 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold mb-4 text-indigo-400">Image Generator</h2>
         

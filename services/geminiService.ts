@@ -6,7 +6,7 @@
   that can securely store and manage the API key. This prevents unauthorized access
   and abuse of your API credentials.
 */
-import { GoogleGenAI, Modality, Type } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/genai";
 import type { AspectRatio } from "../types";
 
 // REVERT: The service is refactored to manage an active API key set by the admin.
@@ -27,27 +27,23 @@ class GeminiService {
   public async generateImage(prompt: string, aspectRatio: AspectRatio): Promise<string> {
     try {
       const ai = this.getClient();
-      const promptWithAspectRatio = `${prompt}, aspect ratio ${aspectRatio}`;
 
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash-image',
-        contents: {
-          parts: [{ text: promptWithAspectRatio }],
-        },
+      const response = await ai.models.generateImages({
+        model: 'imagen-4.0-generate-001',
+        prompt: prompt,
         config: {
-          responseModalities: [Modality.IMAGE],
+          numberOfImages: 1,
+          outputMimeType: 'image/jpeg',
+          aspectRatio: aspectRatio,
         },
       });
 
-      for (const part of response.candidates[0].content.parts) {
-        if (part.inlineData) {
-          const base64ImageBytes: string = part.inlineData.data;
-          const mimeType = part.inlineData.mimeType;
-          return `data:${mimeType};base64,${base64ImageBytes}`;
-        }
+      if (response.generatedImages && response.generatedImages.length > 0) {
+        const base64ImageBytes: string = response.generatedImages[0].image.imageBytes;
+        return `data:image/jpeg;base64,${base64ImageBytes}`;
       }
       
-      throw new Error("No image was generated from the response parts.");
+      throw new Error("No image was generated from the response.");
 
     } catch (error) {
       console.error("Error generating image:", error);
